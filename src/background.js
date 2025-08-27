@@ -1,0 +1,1 @@
+firefox.browserAction.onClicked.addEventListener()

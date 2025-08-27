@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "Search Anywhere",
+  "version": "1.0",
+  "description": "Search with multiple searching engines just by highliting the word!",
+  "permissions": [
+    "activeTab",
+    "contextMenus", "<all_urls>","clipboardWrite", "search", "storage", "webNavigation", "webRequest", "webRequestBlocking"
+  ],
+  "optional-permissions": ["downloads", "tabs"],
+
+  "homepage-url": "https://github.com/mokuyoto/Search-Anywhere",
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.wikipedia.org","https://www.youtube.com/", "https://www.google.com/", "https://www.imdb.com/"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_popup": "popup.html"
+  },
+
+  "commands": {
+    "open-popup": {
+        "suggested-key": {"default": "Tab + Space"},
+        "description": "Open the suggestion box, if the text is selected"
+    },
+    "toggle-auto-popus": {
+        "suggested-key": {"default": "Ctrl + Shift + U"},
+        "description": "Switch between \"Auto\" pop up and \"Manual\" pop up"
+    }
+  }
+}
